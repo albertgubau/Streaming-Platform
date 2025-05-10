@@ -1,12 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path')
 const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
     mode: prod ? 'production' : 'development',
     entry: './src/index.tsx', // entry point of the app
     output: {
-        path: __dirname + '/dist/' // output directory
+        path: path.resolve(__dirname, 'dist') // output directory
     },
     module: {
         rules: [
@@ -19,18 +20,20 @@ module.exports = {
                 test: /\.(c|sc|sa)ss$/,
                 use: [
                     prod ? MiniCssExtractPlugin.loader : 'style-loader', // Avoid extracting CSS in development mode
-                    'css-loader',
-                    'sass-loader'
+                    'css-loader'
                 ]
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'] // Resolve these extensions
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
     devServer: {
-        port: 3000 // Port for the development server
+        host: 'localhost.rakuten.tv',
+        port: 3000,
+        allowedHosts: 'all'
     },
+    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             // Generate an HTML file with the bundled JavaScript using index.html as template
