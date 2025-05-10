@@ -31,7 +31,8 @@ module.exports = {
     devServer: {
         host: 'localhost.rakuten.tv',
         port: 3000,
-        allowedHosts: 'all'
+        allowedHosts: 'all',
+        historyApiFallback: true
     },
     devtool: 'source-map',
     plugins: [

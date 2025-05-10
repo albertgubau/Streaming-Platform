@@ -1,17 +1,23 @@
 import React from 'react'
 
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+
+import Layout from './layouts/Layout'
+import Home from './pages/home/Home'
+import ContentDetail from './pages/content-detail/ContentDetail'
+
 import '../src/styles/global.css'
-import Header from './components/header/Header'
-import Footer from './components/footer/Footer'
 
 const App = () => {
     return (
-        // Router will go here
-        <>
-            <Header />
-            <main>Body</main>
-            <Footer />
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="content/:id" element={<ContentDetail />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
+import {FooterStyled} from './Footer.styles'
 
 export default function Footer() {
-    return <footer>Footer</footer>
+    return <FooterStyled>Footer</FooterStyled>
 }
