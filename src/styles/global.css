@@ -4,12 +4,20 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--sp-background-color-primary);
+    color: var(--sp-text-color-primary);
+}
+
 #root {
-    height: 100dvh;
+    min-height: 100dvh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
 }
 
 :root {
-    --sp-background-color-primary: rgb(0, 0, 0);
+    --sp-background-color-primary: rgb(16, 16, 16);
+    --sp-text-color-primary: rgb(255, 255, 255);
 }

@@ -2,9 +2,9 @@ import React from 'react'
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
-import Layout from './layouts/Layout'
-import Home from './pages/home/Home'
-import ContentDetail from './pages/content-detail/ContentDetail'
+import Layout from './layouts/layout'
+import Home from './pages/home/home'
+import ContentDetail from './pages/content-detail/content-detail'
 
 import '../src/styles/global.css'
 

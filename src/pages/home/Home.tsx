@@ -1,23 +1,30 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-
-const contents = [
-    {id: 1, title: 'Inception'},
-    {id: 2, title: 'Interstellar'},
-    {id: 3, title: 'The Dark Knight'}
-]
+import useHomePage from './use-home-page.hook'
+import ContentListCarousel from '../../components/content-list/content-list-carousel'
 
 export default function Home() {
+    const {freeTopMoviesList, storeAllOffersList, storeHottestList, freeRecentlyAddedList} =
+        useHomePage()
+
     return (
         <div>
-            <h1>Contents List</h1>
-            <ul>
-                {contents.map((content) => (
-                    <li key={content.id}>
-                        <Link to={`/content/${content.id}`}>{content.title}</Link>
-                    </li>
-                ))}
-            </ul>
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '500px',
+                    backgroundColor: 'lightgray',
+                    padding: '20px',
+                    marginBottom: '70px'
+                }}
+            >
+                Main Carousel
+            </div>
+            <ContentListCarousel contentsList={freeTopMoviesList} />
+            <ContentListCarousel contentsList={storeHottestList} />
+            <ContentListCarousel contentsList={storeAllOffersList} />
+            <ContentListCarousel contentsList={freeRecentlyAddedList} />
         </div>
     )
 }

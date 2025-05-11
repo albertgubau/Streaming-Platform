@@ -1,5 +1,5 @@
 import React from 'react'
-import {HeaderStyled} from './Header.styles'
+import {HeaderStyled} from './header.styles'
 
 export default function Header() {
     return <HeaderStyled>Header</HeaderStyled>

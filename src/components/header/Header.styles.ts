@@ -7,4 +7,6 @@ export const HeaderStyled = styled.header`
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+    position: sticky;
+    top: 0;
 `
