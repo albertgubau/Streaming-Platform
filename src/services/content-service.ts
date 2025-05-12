@@ -1,5 +1,8 @@
 import {ContentList} from '../components/content-list/interfaces'
-import {convertApiResponseToContentList} from '../utils/convert-api-to-implementation'
+import {
+    convertListsApiResponseToContentList,
+    convertMoviesApiResponseToContentDetail
+} from './convert-api-to-implementation'
 import {CustomError} from './interfaces'
 
 const BASE_URL = 'https://gizmo.rakuten.tv/v3/'
@@ -25,7 +28,7 @@ export const getContentList = async (
 
         if (!response.ok) throw result
 
-        const convertedResponse = convertApiResponseToContentList(result.data)
+        const convertedResponse = convertListsApiResponseToContentList(result.data)
 
         return convertedResponse
     } catch (e) {
@@ -54,7 +57,9 @@ export const getContentById = async (
 
         if (!response.ok) throw result
 
-        return result.data
+        const convertedResponse = convertMoviesApiResponseToContentDetail(result.data)
+
+        return convertedResponse
     } catch (e) {
         throw new Error((e as CustomError).errors[0].message)
     }

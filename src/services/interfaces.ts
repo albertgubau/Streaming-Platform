@@ -1,4 +1,4 @@
-export interface ApiResponse {
+export interface ListsApiResponse {
     name: string
     contents: {
         data: {
@@ -11,6 +11,15 @@ export interface ApiResponse {
                 standard_artwork: string
             }
         }[]
+    }
+}
+
+export interface MoviesApiResponse {
+    id: string
+    title: string
+    short_plot: string
+    images: {
+        snapshot: string
     }
 }
 

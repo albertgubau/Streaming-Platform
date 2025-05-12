@@ -55,7 +55,9 @@ export default function useHomePage() {
             try {
                 const contentList = await getContentList(category)
                 dispatch({type: 'SET_CONTENT', category, contentList})
-            } catch {}
+            } catch (error) {
+                throw error
+            }
         }
 
         // Load all categories (ToDO: implement lazy loading)

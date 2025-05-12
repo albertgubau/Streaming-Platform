@@ -8,27 +8,18 @@ export default function Footer() {
             <FooterWrapper>
                 <FooterLinks>
                     <FooterColumn>
-                        <span>About Us</span>
-                        <span>Services</span>
+                        <span>Github</span>
+                        <span>LinkedIn</span>
                         <span>Contact</span>
-                        <span>Privacy Policy</span>
                     </FooterColumn>
                     <FooterColumn>
                         <span>About Us</span>
                         <span>Services</span>
-                        <span>Contact</span>
-                        <span>Privacy Policy</span>
-                    </FooterColumn>
-                    <FooterColumn>
-                        <span>About Us</span>
-                        <span>Services</span>
-                        <span>Contact</span>
                         <span>Privacy Policy</span>
                     </FooterColumn>
                 </FooterLinks>
                 <Logo className="footer-logo" />
             </FooterWrapper>
-
             <StyledText>© 2024 Albert Gubau. All rights reserved.</StyledText>
         </FooterStyled>
     )

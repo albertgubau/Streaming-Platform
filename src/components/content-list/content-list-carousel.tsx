@@ -10,11 +10,11 @@ import {
 } from './content-list-carousel.styles'
 import ContentListPlaceholder from './content-list-placeholder'
 
-interface ContentListProps {
+interface ContentListCarouselProps {
     contentsList: ContentList | null
 }
 
-export default function ContentListCarousel({contentsList}: ContentListProps) {
+export default function ContentListCarousel({contentsList}: ContentListCarouselProps) {
     const carouselRef = React.useRef<HTMLDivElement>(null)
 
     if (!contentsList) {

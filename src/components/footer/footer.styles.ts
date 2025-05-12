@@ -1,8 +1,10 @@
 import styled from 'styled-components'
+import {MQ} from '../../utils/constants/breakpoints'
 
 export const FooterStyled = styled.footer`
-    background-color: var(--sp-background-color-primary);
-    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     padding: 64px;
 `
 
@@ -19,9 +21,16 @@ export const FooterWrapper = styled.div`
 
 export const FooterLinks = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: left;
-    width: 75%;
+    width: 50%;
+    gap: 48px;
+
+    @media (min-width: ${MQ.md}px) {
+        flex-direction: row;
+        width: 50%;
+    }
 `
 
 export const FooterColumn = styled.div`

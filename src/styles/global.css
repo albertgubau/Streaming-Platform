@@ -18,6 +18,6 @@ body {
 }
 
 :root {
-    --sp-background-color-primary: rgb(16, 16, 16);
+    --sp-background-color-primary: black;
     --sp-text-color-primary: rgb(255, 255, 255);
 }

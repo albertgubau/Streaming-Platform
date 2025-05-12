@@ -9,7 +9,7 @@ export const CarouselContainer = styled.div`
 `
 
 export const ListTitle = styled.h2`
-    padding-left: 20px;
+    padding: 0 20px;
     &.placeholder {
         background-color: lightgray;
         height: 20px;
