@@ -7,6 +7,7 @@ module.exports = {
     mode: prod ? 'production' : 'development',
     entry: './src/index.tsx', // entry point of the app
     output: {
+        publicPath: '/', // public path for the app
         path: path.resolve(__dirname, 'dist') // output directory
     },
     module: {
@@ -21,6 +22,17 @@ module.exports = {
                 use: [
                     prod ? MiniCssExtractPlugin.loader : 'style-loader', // Avoid extracting CSS in development mode
                     'css-loader'
+                ]
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: '@svgr/webpack',
+                        options: {
+                            svgo: true
+                        }
+                    }
                 ]
             }
         ]
