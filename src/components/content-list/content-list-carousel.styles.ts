@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
+import {MQ} from '../../utils/constants/breakpoints'
 
 export const CarouselContainer = styled.div`
     display: flex;
@@ -36,18 +37,19 @@ export const CarouselItem = styled(Link)`
     flex-direction: column;
     gap: 5px;
     text-overflow: ellipsis;
-    width: 32%;
 
-    @media (min-width: 768px) {
+    width: 33%;
+
+    @media (min-width: ${MQ.md}px) {
         width: 20%;
     }
-    @media (min-width: 1024px) {
+    @media (min-width: ${MQ.lg}px) {
         width: 14%;
     }
 
     &.placeholder {
         background-color: lightgray;
-        height: 15vw;
+        height: 20vw;
     }
 
     &:hover {

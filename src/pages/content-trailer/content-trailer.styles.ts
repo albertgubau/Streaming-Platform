@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import {LAYERS} from '../../utils/constants/layers'
 
+export const VideoPlayerWrapper = styled.div`
+    position: relative;
+`
+
 export const BackButton = styled.button`
     all: unset;
     line-height: 0;

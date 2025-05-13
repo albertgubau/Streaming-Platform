@@ -23,7 +23,7 @@ export default function ContentListCarousel({contentsList}: ContentListCarouselP
 
     const handleLeftArrowClick = () => {
         if (carouselRef.current) {
-            carouselRef.current.scrollBy({left: -1000, behavior: 'smooth'})
+            carouselRef.current.scrollBy({left: -window.innerWidth, behavior: 'smooth'})
         }
     }
     const handleRightArrowClick = () => {
@@ -34,7 +34,7 @@ export default function ContentListCarousel({contentsList}: ContentListCarouselP
             if (scrollLeft + clientWidth >= scrollWidth) {
                 carouselRef.current.scrollTo({left: 0, behavior: 'smooth'})
             } else {
-                carouselRef.current.scrollBy({left: 1000, behavior: 'smooth'})
+                carouselRef.current.scrollBy({left: window.innerWidth, behavior: 'smooth'})
             }
         }
     }

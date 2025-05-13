@@ -21,7 +21,7 @@ export default function useContentTrailer() {
         width: '100%',
         height: 'calc(100dvh - 76px)',
         config: {
-            file: {
+            hls: {
                 forceSafariHLS: isSafari
             }
         }

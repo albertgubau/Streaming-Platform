@@ -1,30 +1,36 @@
 import React from 'react'
 import useHomePage from './use-home-page.hook'
-import ContentListCarousel from '../../components/content-list/content-list-carousel'
+import ContentListPlaceholder from '../../components/content-list/content-list-placeholder'
+import BannerImage from '../../components/banner-image/banner-image'
+
+const ContentListCarousel = React.lazy(
+    () => import('../../components/content-list/content-list-carousel')
+)
+
+const ErrorPage = React.lazy(() => import('../error-page/error-page'))
 
 export default function Home() {
-    const {freeTopMoviesList, storeAllOffersList, storeHottestList, freeRecentlyAddedList} =
-        useHomePage()
+    const {contentLists, error} = useHomePage()
+
+    if (error) {
+        return (
+            <React.Suspense>
+                <ErrorPage />
+            </React.Suspense>
+        )
+    }
 
     return (
         <div>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '500px',
-                    backgroundColor: 'lightgray',
-                    padding: '20px',
-                    marginBottom: '70px'
-                }}
-            >
-                Main Carousel
-            </div>
-            <ContentListCarousel contentsList={freeTopMoviesList} />
-            <ContentListCarousel contentsList={storeHottestList} />
-            <ContentListCarousel contentsList={storeAllOffersList} />
-            <ContentListCarousel contentsList={freeRecentlyAddedList} />
+            <BannerImage />
+            {contentLists.map((contentsList, index) => (
+                <React.Suspense
+                    fallback={<ContentListPlaceholder />}
+                    key={contentsList?.listTitle || index}
+                >
+                    <ContentListCarousel contentsList={contentsList} />
+                </React.Suspense>
+            ))}
         </div>
     )
 }

@@ -2,11 +2,15 @@ import React from 'react'
 import {getContentList} from '../../services/content-service'
 import {ContentList} from '../../components/content-list/interfaces'
 
-type ContentCategory =
-    | 'free-top-movies'
-    | 'store-hottest'
-    | 'store-all-offers'
-    | 'free-recently-added'
+const categories = [
+    'free-top-movies',
+    'store-hottest',
+    'store-all-offers',
+    'free-recently-added'
+] as const
+
+// Types of categories that we can have
+type ContentCategory = (typeof categories)[number]
 
 // Reducer action type
 type Action = {
@@ -19,13 +23,15 @@ type Action = {
 type State = Record<ContentCategory, {contentList: ContentList | null}>
 
 // Initial state of the reducer
-const initialState: State = {
-    'free-top-movies': {contentList: null},
-    'store-hottest': {contentList: null},
-    'store-all-offers': {contentList: null},
-    'free-recently-added': {contentList: null}
-}
+const initialState: State = categories.reduce(
+    (state, category) => ({
+        ...state,
+        [category]: {contentList: null}
+    }),
+    {} as State
+)
 
+// Reducer
 function contentReducer(state: State, action: Action): State {
     switch (action.type) {
         case 'SET_CONTENT':
@@ -42,13 +48,7 @@ function contentReducer(state: State, action: Action): State {
 
 export default function useHomePage() {
     const [state, dispatch] = React.useReducer(contentReducer, initialState)
-
-    const categories: ContentCategory[] = [
-        'free-top-movies',
-        'store-hottest',
-        'store-all-offers',
-        'free-recently-added'
-    ]
+    const [error, setError] = React.useState('')
 
     React.useEffect(() => {
         const fetchData = async (category: ContentCategory) => {
@@ -56,7 +56,7 @@ export default function useHomePage() {
                 const contentList = await getContentList(category)
                 dispatch({type: 'SET_CONTENT', category, contentList})
             } catch (error) {
-                throw error
+                setError(error as string)
             }
         }
 
@@ -68,10 +68,12 @@ export default function useHomePage() {
         })
     }, [])
 
+    const contentLists: Array<ContentList | null> = categories.map(
+        (category) => state[category].contentList
+    )
+
     return {
-        freeTopMoviesList: state['free-top-movies'].contentList,
-        storeHottestList: state['store-hottest'].contentList,
-        storeAllOffersList: state['store-all-offers'].contentList,
-        freeRecentlyAddedList: state['free-recently-added'].contentList
+        contentLists,
+        error
     }
 }

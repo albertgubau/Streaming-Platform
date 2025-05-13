@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+
 const path = require('path')
 const prod = process.env.NODE_ENV === 'production'
 
@@ -41,12 +43,14 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
     devServer: {
-        host: 'localhost.rakuten.tv',
         port: 3000,
         allowedHosts: 'all',
         historyApiFallback: true
     },
-    devtool: 'source-map',
+    devtool: prod ? undefined : 'source-map',
+    optimization: {
+        minimizer: ['...', new CssMinimizerPlugin()]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             // Generate an HTML file with the bundled JavaScript using index.html as template

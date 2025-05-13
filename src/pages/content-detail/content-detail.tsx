@@ -15,11 +15,17 @@ import ClapperBoard from '../../assets/icons/clapper-board.svg'
 import Share from '../../assets/icons/share.svg'
 import useContentDetail from './use-content-detail.hook'
 
+const ErrorPage = React.lazy(() => import('../error-page/error-page'))
+
 export default function ContentDetailPage() {
     const {content, error} = useContentDetail()
 
-    if (!content) {
-        return <p>{error}</p>
+    if (!content || error) {
+        return (
+            <React.Suspense>
+                <ErrorPage />
+            </React.Suspense>
+        )
     }
 
     return (
