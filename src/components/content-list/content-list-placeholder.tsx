@@ -13,7 +13,7 @@ export default function ContentListPlaceholder() {
         <CarouselContainer>
             <ListTitle className="placeholder" />
             <CarouselWrapper>
-                <Carousel>
+                <Carousel data-testid="carousel-placeholder">
                     {Array.from({length: 7}).map((_, index) => (
                         <CarouselItem to={''} key={index} className="placeholder" />
                     ))}

@@ -24,10 +24,7 @@ export default function Home() {
         <div>
             <BannerImage />
             {contentLists.map((contentsList, index) => (
-                <React.Suspense
-                    fallback={<ContentListPlaceholder />}
-                    key={contentsList?.listTitle || index}
-                >
+                <React.Suspense fallback={<ContentListPlaceholder />} key={index}>
                     <ContentListCarousel contentsList={contentsList} />
                 </React.Suspense>
             ))}

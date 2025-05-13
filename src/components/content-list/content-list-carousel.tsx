@@ -49,7 +49,7 @@ export default function ContentListCarousel({contentsList}: ContentListCarouselP
                 <ArrowButton onClick={handleRightArrowClick} className="right">
                     ▶
                 </ArrowButton>
-                <Carousel ref={carouselRef}>
+                <Carousel ref={carouselRef} data-testid="carousel">
                     {contentsList.contents.map((content) => (
                         <CarouselItem key={content.id} to={`/content/${content.id}`}>
                             <img src={content.imageSrc} alt={content.id} />

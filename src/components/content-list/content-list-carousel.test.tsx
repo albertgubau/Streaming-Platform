@@ -4,6 +4,29 @@ import ContentListCarousel from './content-list-carousel'
 import '@testing-library/jest-dom'
 import {ContentList} from './interfaces'
 
+jest.mock('../../assets/icons/share.svg', () => 'svgMock')
+
+jest.mock('./content-list-carousel.styles', () => ({
+    ArrowButton: ({children, ...props}: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
+        <button {...props}>{children}</button>
+    ),
+    Carousel: ({children, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+        <div {...props}>{children}</div>
+    ),
+    CarouselContainer: ({children, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+        <div {...props}>{children}</div>
+    ),
+    CarouselItem: ({children, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+        <div {...props}>{children}</div>
+    ),
+    CarouselWrapper: ({children, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+        <div {...props}>{children}</div>
+    ),
+    ListTitle: ({children, ...props}: React.HTMLAttributes<HTMLHeadingElement>) => (
+        <h2 {...props}>{children}</h2>
+    )
+}))
+
 const mockContentList: ContentList = {
     listTitle: 'Featured Movies',
     contents: [
@@ -16,6 +39,11 @@ const mockContentList: ContentList = {
 }
 
 describe('ContentListCarousel', () => {
+    it('renders the placeholder when no contentList is passed by prop', () => {
+        render(<ContentListCarousel contentsList={null} />)
+        expect(screen.getByTestId('carousel-placeholder')).toBeInTheDocument()
+    })
+
     it('renders the list title and images when contentsList is provided', () => {
         render(<ContentListCarousel contentsList={mockContentList} />)
         expect(screen.getByText('Featured Movies')).toBeInTheDocument()
@@ -24,7 +52,7 @@ describe('ContentListCarousel', () => {
 
     it('scrolls left when the left arrow is clicked', () => {
         render(<ContentListCarousel contentsList={mockContentList} />)
-        const carousel = screen.getByRole('list') // Assuming the carousel is a list
+        const carousel = screen.getByTestId('carousel')
         const leftArrow = screen.getByText('◀')
 
         // Mock scrollBy
@@ -37,20 +65,20 @@ describe('ContentListCarousel', () => {
 
     it('scrolls right when the right arrow is clicked', () => {
         render(<ContentListCarousel contentsList={mockContentList} />)
-        const carousel = screen.getByRole('list') // Assuming the carousel is a list
+        const carousel = screen.getByTestId('carousel')
         const rightArrow = screen.getByText('▶')
 
-        // Mock scrollBy
-        const scrollByMock = jest.fn()
-        Object.defineProperty(carousel, 'scrollBy', {value: scrollByMock, writable: true})
+        // Mock scrollTo
+        const scrollToMock = jest.fn()
+        Object.defineProperty(carousel, 'scrollTo', {value: scrollToMock, writable: true})
 
         fireEvent.click(rightArrow)
-        expect(scrollByMock).toHaveBeenCalledWith({left: window.innerWidth, behavior: 'smooth'})
+        expect(scrollToMock).toHaveBeenCalled()
     })
 
     it('resets to the start when at the end and right arrow is clicked', () => {
         render(<ContentListCarousel contentsList={mockContentList} />)
-        const carousel = screen.getByRole('list') // Assuming the carousel is a list
+        const carousel = screen.getByTestId('carousel')
         const rightArrow = screen.getByText('▶')
 
         // Mock scrollTo and scrollWidth

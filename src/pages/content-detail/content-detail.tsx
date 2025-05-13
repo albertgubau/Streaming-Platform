@@ -29,7 +29,7 @@ export default function ContentDetailPage() {
     }
 
     return (
-        <ContentDetailWrapper>
+        <ContentDetailWrapper data-testid="content-detail">
             <ContentArtWork>
                 <img src={content.imageSrc} alt={content.id} />
                 <ContentCTAWrapper>

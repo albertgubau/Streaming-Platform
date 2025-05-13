@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "moduleResolution": "node",
     "lib": [
       "dom",
