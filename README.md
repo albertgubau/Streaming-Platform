@@ -2,6 +2,8 @@
 
 This project simulates the Rakuten TV streaming platform allowing users to explore multimedia content, view details about movies or series, and play trailers.
 
+![Image](https://github.com/user-attachments/assets/b5c1286f-6231-4b78-9893-baf5b6913069)
+
 ## Features
 
 - **Home Page**: Displays categories with featured content.
