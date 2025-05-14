@@ -14,7 +14,6 @@
     "license": "ISC",
     "description": "This is a streaming platform built with React, TypeScript, and Webpack.",
     "devDependencies": {
-        "@babel/cli": "^7.27.2",
         "@babel/core": "^7.27.1",
         "@babel/preset-env": "^7.27.2",
         "@babel/preset-react": "^7.27.1",
@@ -29,7 +28,6 @@
         "@typescript-eslint/eslint-plugin": "^8.32.0",
         "@typescript-eslint/parser": "^8.32.0",
         "babel-loader": "^10.0.0",
-        "babel-plugin-styled-components": "^2.1.4",
         "cross-env": "^7.0.3",
         "css-loader": "^7.1.2",
         "css-minimizer-webpack-plugin": "^7.0.2",
@@ -40,7 +38,6 @@
         "husky": "^9.1.7",
         "jest": "^29.7.0",
         "jest-environment-jsdom": "^29.7.0",
-        "jest-svg-transformer": "^1.0.0",
         "mini-css-extract-plugin": "^2.9.2",
         "prettier": "^3.5.3",
         "style-loader": "^4.0.0",
