@@ -43,6 +43,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
     devServer: {
+        host: 'localhost.rakuten.tv',
         port: 3000,
         allowedHosts: 'all',
         historyApiFallback: true
