@@ -1,3 +1,6 @@
+/**
+ * This is the interface describing the structure of the API response for the lists.
+ */
 export interface ListsApiResponse {
     name: string
     contents: {
@@ -14,6 +17,9 @@ export interface ListsApiResponse {
     }
 }
 
+/**
+ * This is the interface describing the structure of the API response for the movies.
+ */
 export interface MoviesApiResponse {
     id: string
     title: string
@@ -21,10 +27,4 @@ export interface MoviesApiResponse {
     images: {
         snapshot: string
     }
-}
-
-export interface CustomError {
-    errors: {
-        message: string
-    }[]
 }

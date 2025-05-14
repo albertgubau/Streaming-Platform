@@ -4,6 +4,7 @@ import Logo from '../../assets/rakuten-logo.svg'
 
 export default function Footer() {
     return (
+        // ToDO: Those spans should be real links
         <FooterStyled>
             <FooterWrapper>
                 <FooterLinks>

@@ -8,6 +8,9 @@ import {
     ListTitle
 } from './content-list-carousel.styles'
 
+/**
+ * Displays the content list carousel placeholder component (for the component loading state or error handling).
+ */
 export default function ContentListPlaceholder() {
     return (
         <CarouselContainer>

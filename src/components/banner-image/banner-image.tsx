@@ -7,6 +7,9 @@ const mockImage = {
     alt: 'la-liga-banner'
 }
 
+/**
+ * Displays the banner image component.
+ */
 export default function BannerImage() {
     return (
         <BannerImageWrapper>

@@ -1,3 +1,6 @@
+/**
+ * Describes the ContentList UI element properties
+ */
 export interface ContentList {
     listTitle: string
     contents: {

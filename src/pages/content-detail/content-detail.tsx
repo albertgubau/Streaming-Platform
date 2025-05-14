@@ -17,15 +17,26 @@ import useContentDetail from './use-content-detail.hook'
 
 const ErrorPage = React.lazy(() => import('../error-page/error-page'))
 
+/**
+ * ContentDetailPage component
+ * This component is responsible for displaying the content detail.
+ * It uses the useContentDetail hook to get the content data and show/hide the error page.
+ */
 export default function ContentDetailPage() {
     const {content, error} = useContentDetail()
 
-    if (!content || error) {
+    // Show error page if there is an error
+    if (error) {
         return (
             <React.Suspense>
                 <ErrorPage />
             </React.Suspense>
         )
+    }
+
+    // If there is no content, show nothing
+    if (!content) {
+        return null
     }
 
     return (

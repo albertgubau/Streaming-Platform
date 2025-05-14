@@ -14,6 +14,11 @@ interface ContentListCarouselProps {
     contentsList: ContentList | null
 }
 
+/**
+ * ContentListCarousel component displays a list of contents in a carousel format.
+ * It allows users to scroll through the contents using left and right arrow buttons.
+ * If the contents list is not available, it shows a placeholder.
+ */
 export default function ContentListCarousel({contentsList}: ContentListCarouselProps) {
     const carouselRef = React.useRef<HTMLDivElement>(null)
 
@@ -21,6 +26,7 @@ export default function ContentListCarousel({contentsList}: ContentListCarouselP
         return <ContentListPlaceholder />
     }
 
+    // Handle the left and right arrow clicks
     const handleLeftArrowClick = () => {
         if (carouselRef.current) {
             carouselRef.current.scrollBy({left: -window.innerWidth, behavior: 'smooth'})

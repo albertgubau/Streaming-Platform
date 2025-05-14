@@ -4,10 +4,8 @@ import '@testing-library/jest-dom'
 import useContentTrailer from './use-content-trailer.hook'
 import ContentTrailerPage from './content-trailer'
 
-// Mock del hook useContentTrailer
 jest.mock('./use-content-trailer.hook', () => jest.fn())
 
-// Mock de los estilos
 jest.mock('./content-trailer.styles', () => ({
     VideoPlayerWrapper: ({children, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
         <div {...props}>{children}</div>
@@ -44,7 +42,6 @@ describe('ContentTrailerPage', () => {
     it('renders the video player when showPlayer is true', async () => {
         render(<ContentTrailerPage />)
 
-        // Verifica que el contenedor del reproductor de video se renderiza
         await waitFor(() => {
             expect(screen.getByTestId('video-player')).toBeInTheDocument()
         })

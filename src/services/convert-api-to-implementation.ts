@@ -2,6 +2,11 @@ import {ListsApiResponse, MoviesApiResponse} from './interfaces'
 import {ContentList} from '../components/content-list/interfaces'
 import {ContentDetail} from '../pages/content-detail/interfaces'
 
+/**
+ *
+ * @param apiResponse - The API response object containing the list data.
+ * @returns A ContentList object.
+ */
 export const convertListsApiResponseToContentList = (
     apiResponse: ListsApiResponse
 ): ContentList => {
@@ -16,6 +21,11 @@ export const convertListsApiResponseToContentList = (
     }
 }
 
+/**
+ * Converts the Movies API response to a ContentDetail object.
+ * @param apiResponse - The Movies API response object.
+ * @returns A ContentDetail object.
+ */
 export const convertMoviesApiResponseToContentDetail = (
     apiResponse: MoviesApiResponse
 ): ContentDetail => {

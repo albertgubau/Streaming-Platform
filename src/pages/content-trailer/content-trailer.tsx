@@ -5,6 +5,11 @@ import useContentTrailer from './use-content-trailer.hook'
 
 const ReactPlayer = React.lazy(() => import('react-player/file'))
 
+/**
+ * ContentTrailerPage component
+ * This component is responsible for displaying the content trailer.
+ * It uses the useContentTrailer hook to get the player configuration and show/hide the player.
+ */
 export default function ContentTrailerPage() {
     const {showPlayer, playerConfig, handleGoBack} = useContentTrailer()
 

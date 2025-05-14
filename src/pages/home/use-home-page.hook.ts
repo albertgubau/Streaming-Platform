@@ -2,6 +2,7 @@ import React from 'react'
 import {getContentList} from '../../services/content-service'
 import {ContentList} from '../../components/content-list/interfaces'
 
+// Categories source of truth
 const categories = [
     'free-top-movies',
     'store-hottest',
@@ -54,13 +55,14 @@ export default function useHomePage() {
         const fetchData = async (category: ContentCategory) => {
             try {
                 const contentList = await getContentList(category)
+                // Update the state with the new content list for the right category
                 dispatch({type: 'SET_CONTENT', category, contentList})
             } catch (error) {
                 setError(error as string)
             }
         }
 
-        // Load all categories (ToDO: implement lazy loading)
+        // Load all categories (ToDO: implement lazy loading while scrolling the home page)
         categories.forEach((category) => {
             if (!state[category]?.contentList) {
                 fetchData(category)

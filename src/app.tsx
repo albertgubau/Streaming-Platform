@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
 import '../src/styles/global.css'
 
+// Lazy load the components to improve performance and bundle size
 const Layout = React.lazy(() => import('./layouts/layout'))
 const Home = React.lazy(() => import('./pages/home/home'))
 const ContentDetailPage = React.lazy(() => import('./pages/content-detail/content-detail'))
